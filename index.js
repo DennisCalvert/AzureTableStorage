@@ -1,4 +1,4 @@
-var config = require('config');
+var config = require('godconfig');
 var azure = require('azure-storage');
 var Promise = require("bluebird");
 var atsTranslator = require('./atsTranslator');
@@ -11,7 +11,6 @@ function AzureTableStorage() {
 
 	// Public Methods
 	return {
-
 
 		get: function (tableName, partitionKey) {
 			const query = new azure.TableQuery().where('PartitionKey eq ?', partitionKey);

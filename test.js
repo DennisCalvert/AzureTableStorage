@@ -1,6 +1,6 @@
 const ats = require('./index');
 const uuid = require('uuid');
-const config = require('config');
+const config = require('godconfig');
 
 const tableName = config.azureStorage.table.tables.gotit;
 
