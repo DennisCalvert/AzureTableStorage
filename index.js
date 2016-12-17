@@ -56,6 +56,7 @@ function AzureTableStorage() {
 			});
 		},
 
+
         deleteTable: function (tableName) {
             return new Promise(function(resolve, reject){
                 tableSvc.deleteTableIfExists(tableName, function(error, response){
