@@ -1,4 +1,4 @@
-const config = require(process.cwd() + '/config');
+const config = require(process.cwd() + '\config');
 const azure = require('azure-storage');
 const Promise = require("bluebird");
 const atsTranslator = require('./atsTranslator');
