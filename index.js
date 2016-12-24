@@ -1,12 +1,12 @@
-var config = require('godconfig');
-var azure = require('azure-storage');
-var Promise = require("bluebird");
-var atsTranslator = require('./atsTranslator');
+const config = require(process.cwd() + '/config');
+const azure = require('azure-storage');
+const Promise = require("bluebird");
+const atsTranslator = require('./atsTranslator');
 
 function AzureTableStorage() {
 
-	var retryOperations = new azure.ExponentialRetryPolicyFilter();
-	var tableSvc = azure.createTableService(config.azureStorage.table.accountName, config.azureStorage.table.accountKey).withFilter(retryOperations);
+	const retryOperations = new azure.ExponentialRetryPolicyFilter();
+	const tableSvc = azure.createTableService(config.azureStorage.table.accountName, config.azureStorage.table.accountKey).withFilter(retryOperations);
 
 
 	// Public Methods
@@ -30,7 +30,7 @@ function AzureTableStorage() {
 				tableSvc.createTableIfNotExists(tableName, function (error, result, response) {
 					tableSvc.insertOrMergeEntity(tableName, tableStorageObj, { echoContent: true }, function (error, result, response) {
 						if (!error) {
-							var r = { RowKey: tableStorageObj.RowKey._ };
+							const r = { RowKey: tableStorageObj.RowKey._ };
 							resolve(r);
 						} else {
 							reject(error);
